@@ -6,7 +6,7 @@ const Navbar = (props) => {
         <nav>
             <h1>The Office Click Game!</h1>
             <p>{props.message}</p>
-            <span>Current Score: {props.score} || Top Score: {props.topscore}</span>
+            <span>Current Score: {props.score} || Top Score: {props.topScore}</span>
 
         </nav>
     )
