@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Andy",
-        "image": "./images/andyCropped.jpg"
+        "image": "../public/images/andyCropped.jpg"
     },
     {
         "id": 2,
