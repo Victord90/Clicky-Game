@@ -1,12 +1,13 @@
 import React from "react";
+import "./style.css";
 
 
-const Card = (props) => {
+function Card (props) {
     return (
-        <div>
+        <div className="imgContainer">
             <img onClick={() => props.imageClicked(props.id, props.name,props.clicked)} src={props.image} alt={props.name} key={props.id}/>
         </div>
-    )
+    );
 }
 
 

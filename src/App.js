@@ -24,19 +24,20 @@ class App extends Component {
     this.imageShuffle();
   }
 
-  imageClicked = (id, name, clicked) => {
+  imageClicked = (id) => {
 
     const staffImage = this.state.staff
 
     staffImage.forEach((staff) => {
       
       if (staff.id === id && staff.clicked) {
-        staffImage.forEach((element) => {
-          element.clicked = false
+        staffImage.forEach(staffImage => {
+          staffImage.clicked = false
         });
         this.setState({
-          message: "Sorry you clicked that cast memeber already! Please try again!!",
-          score: 0});
+          score:0,
+          message: "Sorry you clicked that cast memeber already! Please try again!!"
+          });
       } else if (staff.id === id && !staff.clicked) {
         staff.clicked = true
         this.setState({
@@ -50,8 +51,6 @@ class App extends Component {
     if (this.state.score + 1 === staffImage.length) {
       this.setState({
         message: "You won!! Try your luck again!!",
-        score: 0,
-        topScore: 0
       });
 
     }
@@ -69,7 +68,7 @@ class App extends Component {
           score={this.state.score}
           topScore={this.state.topScore}>
         </Navbar>
-
+       
         {this.state.staff.map(staff => (
           <Card
           id={staff.id}

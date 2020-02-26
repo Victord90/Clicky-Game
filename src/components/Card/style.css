@@ -1,0 +1,16 @@
+.imgContainer {
+    text-align: center;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+img {
+    border: 2px solid black;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
