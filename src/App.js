@@ -31,19 +31,23 @@ class App extends Component {
     staffImage.forEach((staff) => {
       
       if (staff.id === id && staff.clicked) {
-        staffImage.forEach(staffImage => {
+
+          staffImage.forEach(staffImage => {
           staffImage.clicked = false
-        });
+
+        }); 
+
         this.setState({
           score:0,
           message: "Sorry you clicked that cast memeber already! Please try again!!"
           });
+
       } else if (staff.id === id && !staff.clicked) {
-        staff.clicked = true
-        this.setState({
-          message: "Correct Choice!!",
-          score: this.state.score + 1,
-          topScore: this.state.score + 1 > this.state.topScore ? this.state.score +1 : this.state.topScore
+          staff.clicked = true
+          this.setState({
+            message: "Correct Choice!!",
+            score: this.state.score + 1,
+            topScore: this.state.score + 1 > this.state.topScore ? this.state.score +1 : this.state.topScore
         });
       }
     })
