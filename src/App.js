@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import Container from './components/container/container';
-import Navbar from './components/navbar/navbar';
-import Card from './components/Card/card';
-import staff from './staff.json';
-
-
+import React, { Component } from "react";
+import "./App.css";
+import Container from "./components/container/container";
+import Navbar from "./components/navbar/navbar";
+import Card from "./components/Card/card";
+import staff from "./staff.json";
+import Row from "./components/Row/row";
 
 class App extends Component {
-
   state = {
     staff,
     message: "Click The Office staff to begin!!",
@@ -17,52 +15,47 @@ class App extends Component {
   };
 
   imageShuffle = () => {
-    this.setState({staff: this.state.staff.sort(() => Math.random() - .8)});
-  }
+    this.setState({ staff: this.state.staff.sort(() => Math.random() - 0.8) });
+  };
 
   componentDidMount() {
     this.imageShuffle();
   }
 
-  imageClicked = (id) => {
+  imageClicked = id => {
+    const staffImage = this.state.staff;
 
-    const staffImage = this.state.staff
-
-    staffImage.forEach((staff) => {
-      
+    staffImage.forEach(staff => {
       if (staff.id === id && staff.clicked) {
-
-          staffImage.forEach(staffImage => {
-          staffImage.clicked = false
-
-        }); 
+        staffImage.forEach(staffImage => {
+          staffImage.clicked = false;
+        });
 
         this.setState({
-          score:0,
-          message: "Sorry you clicked that cast memeber already! Please try again!!"
-          });
-
+          score: 0,
+          message:
+            "Sorry you clicked that cast memeber already! Please try again!!"
+        });
       } else if (staff.id === id && !staff.clicked) {
-          staff.clicked = true
-          this.setState({
-            message: "Correct Choice!!",
-            score: this.state.score + 1,
-            topScore: this.state.score + 1 > this.state.topScore ? this.state.score +1 : this.state.topScore
+        staff.clicked = true;
+        this.setState({
+          message: "Correct Choice!!",
+          score: this.state.score + 1,
+          topScore:
+            this.state.score + 1 > this.state.topScore
+              ? this.state.score + 1
+              : this.state.topScore
         });
       }
-    })
+    });
 
     if (this.state.score + 1 === staffImage.length) {
       this.setState({
-        message: "You won!! Try your luck again!!",
+        message: "You won!! Try your luck again!!"
       });
-
     }
-    this.imageShuffle()
+    this.imageShuffle();
   };
-
-
-
 
   render() {
     return (
@@ -70,24 +63,24 @@ class App extends Component {
         <Navbar
           message={this.state.message}
           score={this.state.score}
-          topScore={this.state.topScore}>
-        </Navbar>
-       
-        {this.state.staff.map(staff => (
-          <Card
-          id={staff.id}
-          key={staff.id}
-          name={staff.name}
-          image={staff.image}
-          shuffle={this.imageShuffle}
-          imageClicked={this.imageClicked} />
-        ))}
-  
+          topScore={this.state.topScore}
+        ></Navbar>
+
+        <Row>
+          {this.state.staff.map(staff => (
+            <Card
+              id={staff.id}
+              key={staff.id}
+              name={staff.name}
+              image={staff.image}
+              shuffle={this.imageShuffle}
+              imageClicked={this.imageClicked}
+            />
+          ))}
+        </Row>
       </Container>
     );
   }
-
 }
-
 
 export default App;
