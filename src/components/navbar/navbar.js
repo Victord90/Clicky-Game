@@ -1,16 +1,12 @@
 import React from "react";
 import style from "./style.css";
 
-const Navbar = props => {
+function Nav() {
   return (
-    <nav>
-      <h1>The Office Click Game!</h1>
-      <p>{props.message}</p>
-      <span>
-        Current Score: {props.score} || Top Score: {props.topScore}
-      </span>
+    <nav class="navbar navbar-dark bg-dark">
+      <h2>Memory Game</h2>
     </nav>
   );
-};
+}
 
-export default Navbar;
+export default Nav;

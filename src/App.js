@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import Container from "./components/container/container";
-import Navbar from "./components/navbar/navbar";
+import Nav from "./components/navbar/navbar";
 import Card from "./components/Card/card";
 import staff from "./staff.json";
 import Row from "./components/Row/row";
+import Header from "./components/header/header";
 
 class App extends Component {
   state = {
@@ -59,26 +60,29 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <Navbar
-          message={this.state.message}
-          score={this.state.score}
-          topScore={this.state.topScore}
-        ></Navbar>
+      <>
+        <Nav />
+        <Container>
+          <Header
+            message={this.state.message}
+            score={this.state.score}
+            topScore={this.state.topScore}
+          ></Header>
 
-        <Row>
-          {this.state.staff.map(staff => (
-            <Card
-              id={staff.id}
-              key={staff.id}
-              name={staff.name}
-              image={staff.image}
-              shuffle={this.imageShuffle}
-              imageClicked={this.imageClicked}
-            />
-          ))}
-        </Row>
-      </Container>
+          <Row>
+            {this.state.staff.map(staff => (
+              <Card
+                id={staff.id}
+                key={staff.id}
+                name={staff.name}
+                image={staff.image}
+                shuffle={this.imageShuffle}
+                imageClicked={this.imageClicked}
+              />
+            ))}
+          </Row>
+        </Container>
+      </>
     );
   }
 }
